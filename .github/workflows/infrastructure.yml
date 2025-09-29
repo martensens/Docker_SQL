@@ -28,6 +28,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS  }}
       - name: Deployment
         run: |
-          az-deployment sub create \
+          az deployment sub create \
             --location westeurope \
-            --template-file Docker_SQL\main.bicep
+            --template-file .\main.bicep
