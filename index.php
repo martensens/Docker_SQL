@@ -3,9 +3,9 @@
 // Konfiguration über Environment Variables (Service Connector)
 // --------------------
 $server   = getenv("AZURE_SQL_SERVERNAME") ?: "localhost";
-$database = getenv("AZURE_SQL_DATABASE") ?: "testdb";
-$username = getenv("AZURE_SQL_UID") ?: "user";
-$password = getenv("AZURE_SQL_PWD") ?: "password";
+$database = getenv("AZURE_SQL_DATABASE")   ?: "testdb";
+$username = getenv("AZURE_SQL_UID")        ?: "user";
+$password = getenv("AZURE_SQL_PWD")        ?: "password";
 
 $pdo = null;
 $connectError = "";
