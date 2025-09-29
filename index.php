@@ -1,11 +1,11 @@
 <?php
 // --------------------
-// Konfiguration
+// Konfiguration über Environment Variables (Service Connector)
 // --------------------
-$server   = "mstisqlserver02.database.windows.net,1433"; // Unter Linux ggf. Host-IP wie 172.17.0.1
-$database = "mstidatabase01";
-$username = "mstiller";
-$password = "Habenichts_01"; // Passwort anpassen
+$server   = getenv("AZURE_SQL_SERVERNAME") ?: "localhost";
+$database = getenv("AZURE_SQL_DATABASE") ?: "testdb";
+$username = getenv("AZURE_SQL_UID") ?: "user";
+$password = getenv("AZURE_SQL_PWD") ?: "password";
 
 $pdo = null;
 $connectError = "";
@@ -15,7 +15,7 @@ $message = "";
 // Verbindung aufbauen
 // --------------------
 try {
-    $dsn = "sqlsrv:Server=$server;Database=$database;Encrypt=yes;TrustServerCertificate=yes";
+    $dsn = "sqlsrv:Server=$server;Database=$database;Encrypt=yes;TrustServerCertificate=no;LoginTimeout=30";
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
