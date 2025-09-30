@@ -44,5 +44,6 @@ jobs:
       - name: Deployment SQL Server and Database
         run: |
           az deployment group what-if 
-            --group 'rg_dev_infrastruktur' 
-            --file .\db2.bicep
+            --resource-group 'rg_dev_infrastruktur'
+            --mode incremental
+            --template-file .\db2.bicep
