@@ -33,7 +33,7 @@ jobs:
             --template-file ./main.bicep
 
   deploysqlserver:
-    needs: deploy
+    needs: deployrg
     environment: development
     runs-on: ubuntu-latest
     steps:
