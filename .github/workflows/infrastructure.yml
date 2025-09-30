@@ -26,8 +26,23 @@ jobs:
       - uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS  }}
-      - name: Deployment
+      - name: Deployment ResourceGroup
         run: |
           az deployment sub create \
             --location westeurope \
             --template-file ./main.bicep
+
+  deploysqlserver:
+    needs: deploy
+    environment: development
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS  }}
+      - name: Deployment SQL Server and Database
+        run: |
+          az deployment group what-if 
+            --group 'rg_dev_infrastruktur' 
+            --file .\db2.bicep
