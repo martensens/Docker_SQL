@@ -17,7 +17,7 @@ jobs:
             --location westeurope \
             --template-file ./main.bicep
 
-  deploy:
+  deployrg:
     needs: what_if
     environment: development
     runs-on: ubuntu-latest
@@ -44,6 +44,7 @@ jobs:
       - name: Deployment SQL Server and Database
         run: |
           az deployment group what-if 
-            --resource-group 'rg_dev_infrastruktur'
-            --mode incremental
+            --mode Incremental
+            --name rollout01
+            --resource-group 'rg_dev_infrastruktur'        
             --template-file .\db2.bicep
