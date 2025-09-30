@@ -43,8 +43,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS  }}
       - name: Deployment SQL Server and Database
         run: |
-          az deployment group what-if 
-            --mode Incremental
-            --name rollout01
-            --resource-group 'rg_dev_infrastruktur'        
-            --template-file .\db2.bicep
+          az deployment group what-if \
+            --mode Incremental \
+            --name rollout01 \
+            --resource-group 'rg_dev_infrastruktur' \        
+            --template-file ./db2.bicep
