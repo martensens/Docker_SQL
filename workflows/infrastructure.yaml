@@ -1,24 +1,3 @@
-Skip to content
-Navigation Menu
-martensens
-Docker_SQL
-
-Type / to search
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Deploy Infrastructure by Bicep
-Deploy Infrastructure by Bicep #4
-Jobs
-Run details
-Workflow file for this run
-.github/workflows/infrastructure_2.yml at 30806d1
 name: Deploy Infrastructure by Bicep
 
 on:
@@ -75,3 +54,4 @@ jobs:
       - name: Deployment SQL Server and Database
         run: az deployment group create --mode Incremental --name rollout01 --resource-group 'rg_dev_infrastruktur' --template-file ./db2.bicep
 Update infrastructure_2.yml · martensens/Docker_SQL@30806d1
+
